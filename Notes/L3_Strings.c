@@ -42,12 +42,12 @@ int main()
     /* strlen - length of character excluding null but including space
     returns an unsigned int(positive integer)
     */
-    int count = 0;
+    int countt = 0;
     char name[20];
     printf("Enter name: ");
     gets(name);
-    count = strlen(name);
-    printf("String length is: %d", count);
+    countt = strlen(name);
+    printf("String length is: %d", countt);
 
     /*other way of finding string length using logic*/
     char name[50];
@@ -139,9 +139,62 @@ int main()
 
 
 
+    /*reverse a string*/
+
+    char str[50];
+    char temp;
+    printf("Enter string: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str,"\n")] = '\0';
+
+    int length = strlen(str); //result will be excluding the null character
+    // printf("length: %d", length); 
+    for(int x=0; x<length/2; x++){
+        temp = str[x];
+        str[x] = str[length-1-x];
+        str[length-1-x] = temp;
+    }
+    printf("%s", str);
 
 
+    /*Uppercase to lowercase using own logic
+    strlwr & strupr function - returns a pointer to a modified string - char *str
+    ACII VALUES:
+    A = 65 a = 97 (if you add 32, you'll get 97(a))
+    Z = 90 z = 122 (add 32 = 122(z))
+    */
 
+    char str1[20];
+    printf("Enter string: ");
+    fgets(str1, sizeof(str1), stdin);
+    str1[strcspn(str1,"\n")] = '\0';  
+
+    //there are limitations if you use this function
+    // strlwr(str1);
+    // printf("%s", str1);
+    
+    for(int x=0;str1[x]!='\0'; x++){
+        if(str1[x]>=65 && str1[x]<=90){
+            str1[x] = str1[x]+32;
+        }
+    }
+    printf("%s", str1);
+
+    /*Lowercase to Uppercase*/
+
+    char str[20];
+    printf("\nEnter string: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str,"\n")] = '\0';
+
+    for(int x=0; str[x]!='\0';x++){
+        if(str[x]>=97 && str[x]<=122){
+            str[x] = str[x] -32;
+        }
+    }
+
+    printf("%s", str);
+    
 
 
     return 0;
